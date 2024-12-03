@@ -1,5 +1,7 @@
 from typing import Optional
 from fastapi import FastAPI
+from app.models.UserModel import User
+from app.crud import create_user, get_users
 
 app = FastAPI()
 
@@ -14,3 +16,11 @@ def get_items(search: Optional[str] = None, skip: Optional[int] = 0, limit: Opti
 @app.post("/users/")
 def create_user(user: User):
     return {"name": user.name, "age": user.age, "email": user.email}
+
+@app.post("/users/")
+def create_user_endpoint(user: User):
+    return create_user(user)
+
+@app.get("/users/")
+def get_users_endpoint():
+    return get_users()
