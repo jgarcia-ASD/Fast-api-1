@@ -14,10 +14,6 @@ def get_items(search: Optional[str] = None, skip: Optional[int] = 0, limit: Opti
     return {"search": search, "skip": skip, "limit": limit}
 
 @app.post("/users/")
-def create_user(user: User):
-    return {"name": user.name, "age": user.age, "email": user.email}
-
-@app.post("/users/")
 def create_user_endpoint(user: User):
     return create_user(user)
 
